@@ -280,28 +280,28 @@ img {
   scroll-snap-align: start;
 
   &:nth-child(1) {
-    background: lighten($accent, 30%) url("/img/bg1.jpg") center/cover no-repeat
-      fixed;
+    background: lighten($accent, 30%) url("../img/bg1.jpg") center/cover
+      no-repeat fixed;
   }
 
   &:nth-child(2) {
-    background: lighten($accent, 30%) url("/img/bg2.jpeg") center/cover
+    background: lighten($accent, 30%) url("../img/bg2.jpeg") center/cover
       no-repeat fixed;
   }
 
   &:nth-child(3) {
-    background: lighten($accent, 30%) url("/img/bg3.jpg") center/cover no-repeat
-      fixed;
+    background: lighten($accent, 30%) url("../img/bg3.jpg") center/cover
+      no-repeat fixed;
   }
 
   &:nth-child(4) {
-    background: lighten($accent, 30%) url("/img/bg4.jpg") center/cover no-repeat
-      fixed;
+    background: lighten($accent, 30%) url("../img/bg4.jpg") center/cover
+      no-repeat fixed;
   }
 
   &:nth-child(5) {
-    background: lighten($accent, 30%) url("/img/bg5.jpg") center/cover no-repeat
-      fixed;
+    background: lighten($accent, 30%) url("../img/bg5.jpg") center/cover
+      no-repeat fixed;
   }
 
   & .title {
