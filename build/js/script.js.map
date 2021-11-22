@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["script.js"],"sourcesContent":["\"use strict\";\n\nlet toggle = document.querySelector(\".toggle\");\nlet menu = document.querySelector(\".menu\");\n\ntoggle.onclick = function () {\n  menu.classList.toggle(\"active\");\n};"],"file":"script.js"}

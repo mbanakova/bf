@@ -1,0 +1,314 @@
+body {
+  @include font();
+  @include fields();
+  position: relative;
+  min-width: $mobile;
+  margin: 0 auto;
+  font-family: $font;
+  color: #4a4a4a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+
+  @media (min-width: $desktop) {
+    // шаблон медиа-запроса desktop-first
+  }
+
+  @media (min-resolution: $extra) {
+    // шаблон для фонового изображения на экранах с повышенной плотностью пикселей
+  }
+}
+
+body,
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.hero {
+  min-height: 100vh;
+  background-color: rgb(31, 31, 34);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__wrapper {
+  max-width: 1520px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  color: $accent;
+  margin-right: 50px;
+  font-size: 70px;
+  line-height: 75px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.menu {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-icon {
+  position: absolute;
+  left: 0;
+  transform-origin: 200px;
+  transition: 0.5s;
+  transition-delay: calc(0.1s * var(--i));
+  transform: rotate(0deg) translateX(160px);
+
+  .menu.active & {
+    transform: rotate(calc(360deg / 8 * var(--i)));
+  }
+
+  & svg {
+    fill: #555555;
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+    transition: 0.5s;
+  }
+
+  & a {
+    width: 80px;
+    height: 80px;
+    background-color: rgb(31, 31, 34);
+    color: #555555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 2;
+    transform: rotate(calc(360deg / -8 * var(--i)));
+    transition: 0.5s;
+    background-color: rgb(31, 31, 34);
+    color: #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 2;
+    box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05),
+      4px 4px 6px rgba(0, 0, 0, 0.2),
+      inset -1px -1px 4px rgba(255, 255, 255, 0.05),
+      inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+
+    &::before {
+      /* глянец сверху кнопки */
+      position: absolute;
+      content: "";
+      top: 2px;
+      left: 2px;
+      width: calc(100% - 4px);
+      height: calc(100% - 4px);
+      border-radius: 50%;
+      z-index: 50;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.05) 50%,
+        transparent 50%
+      );
+    }
+
+    &:hover svg {
+      transition: 0s;
+      fill: $accent;
+      text-shadow: none;
+      text-shadow: 0 0 15px $accent, 0 0 25px $accent;
+      animation: animate 5s linear infinite;
+      filter: drop-shadow(0 0 10px $accent) drop-shadow(0 0 20px $accent);
+    }
+
+    &:active {
+      box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.05),
+        inset 4px 4px 6px rgba(0, 0, 0, 0.2);
+      & svg {
+        filter: none;
+      }
+    }
+  }
+}
+
+.toggle {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  font-size: 40px;
+  background-color: #0f0f11;
+  color: $accent;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05),
+    4px 4px 6px rgba(0, 0, 0, 0.2),
+    inset -1px -1px 4px rgba(255, 255, 255, 0.05),
+    inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+  transition: 1.25s;
+
+  &::before {
+    position: absolute;
+    content: "";
+    border: 2px solid $accent;
+    width: 120px;
+    height: 120px;
+    left: -15px;
+    top: -15px;
+    border-radius: 50%;
+    animation: pulse 1.8s linear infinite;
+    transition: 0.2s ease-in-out;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    border: 2px solid $accent;
+    width: 120px;
+    height: 120px;
+    left: -15px;
+    top: -15px;
+    border-radius: 50%;
+    animation: pulse 1.8s linear infinite;
+    animation-delay: 0.7s;
+    transition: 0.2s ease-in-out;
+  }
+}
+
+.plus {
+  position: relative;
+  z-index: 10000;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+
+  &::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 4px;
+    transform: translate(-50%, -50%);
+    background-color: $accent;
+    border-radius: 2px;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 24px;
+    transform: translate(-50%, -50%);
+    background-color: $accent;
+    border-radius: 2px;
+  }
+
+  .menu.active & {
+    &::before,
+    &::after {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+@keyframes animate {
+  /* Плавно перебирает весь спектр цветов */
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: y mandatory;
+}
+
+.section {
+  position: relative;
+  padding: 40px;
+  width: 100%;
+  height: 100%;
+  background-blend-mode: multiply;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  scroll-snap-align: start;
+
+  &:nth-child(1) {
+    background: lighten($accent, 30%) url("/img/bg1.jpg") center/cover no-repeat
+      fixed;
+  }
+
+  &:nth-child(2) {
+    background: lighten($accent, 30%) url("/img/bg2.jpeg") center/cover
+      no-repeat fixed;
+  }
+
+  &:nth-child(3) {
+    background: lighten($accent, 30%) url("/img/bg3.jpg") center/cover no-repeat
+      fixed;
+  }
+
+  &:nth-child(4) {
+    background: lighten($accent, 30%) url("/img/bg4.jpg") center/cover no-repeat
+      fixed;
+  }
+
+  &:nth-child(5) {
+    background: lighten($accent, 30%) url("/img/bg5.jpg") center/cover no-repeat
+      fixed;
+  }
+
+  & .title {
+    margin-bottom: 20px;
+  }
+}
+
+.text {
+  color: #f5f5f5;
+}
